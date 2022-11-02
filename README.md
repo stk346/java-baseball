@@ -159,6 +159,12 @@ while (computer.size() < 3) {
 
 ## 기능 구현 목록
 
+***
+- `camp.nextstep.edu.missionutils`에서 제공하는 `Randoms` 및 `Console` API를 사용하여 구현해야 한다.
+- Random 값 추출은 `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
+- 사용자가 입력하는 값은 `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
+***
+
 <br>
 
 * 인풋
@@ -182,6 +188,6 @@ while (computer.size() < 3) {
   - [ ] 2입력: 게임 종료
 
 * 예외케이스 (IllegalArgumentException)
-  - [ ] 입력은 오직 세자리 숫자여야만 함
+  - [ ] 입력은 세자리 숫자 이내 허용, 3자리 초과 불가
   - [ ] 0은 올 수 없음
 
