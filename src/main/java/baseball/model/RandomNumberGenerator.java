@@ -8,6 +8,13 @@ import java.util.List;
 
 public class RandomNumberGenerator {
 
+    public List<Integer> generateRandNum() {
+        List<Integer> randNumList;
+        List<Integer> baseNumList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        randNumList = Randoms.shuffle(baseNumList.subList(0, 3));
+        return randNumList;
+    }
 
     public void randNumAPITest() {
         List<Integer> baseNumList = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9);

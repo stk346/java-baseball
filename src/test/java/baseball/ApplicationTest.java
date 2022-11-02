@@ -2,6 +2,7 @@ package baseball;
 
 import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
@@ -11,11 +12,22 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest extends NsTest {
 
-    @Test
-    void 랜덤넘버_생성_테스트() {
-        RandomNumberGenerator randomTest = new RandomNumberGenerator();
-        randomTest.randNumAPITest();
+
+    @Nested
+    class RandomNumberGeneratorTest {
+        @Test
+        void 랜덤넘버_API_테스트() {
+            RandomNumberGenerator randomTest = new RandomNumberGenerator();
+            randomTest.randNumAPITest();
+        }
+
+        @Test
+        void 랜덤넘버_출력_테스트() {
+            RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
+            System.out.println(randomNumberGenerator.generateRandNum());
+        }
     }
+
 
     @Test
     void 게임종료_후_재시작() {
