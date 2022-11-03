@@ -1,9 +1,13 @@
 package baseball;
 
+import baseball.model.BaseballGame;
 import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -25,6 +29,24 @@ class ApplicationTest extends NsTest {
         void 랜덤넘버_출력_테스트() {
             RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
             System.out.println(randomNumberGenerator.generateRandNum());
+        }
+    }
+
+    @Nested
+    class StrikeTest {
+
+        @Test
+        void 스트라이크_테스트_인풋_하나일_때() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('1');
+            assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
+        }
+
+        @Test
+        void 스트라이크_테스트_인풋_세개일_때() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '3', '5'));
+            List<Character> userInput = List.of('1', '3', '2');
+            assertThat(baseballGame.countStrike(userInput)).isEqualTo(2);
         }
     }
 
