@@ -12,10 +12,6 @@ public class BaseballGame {
         }
     }
 
-    public BaseballGame() {
-
-    };
-
     public boolean isSameNumber(char userBall) {
         boolean isExistSameNumber = false;
         if (this.answer.getOrDefault(userBall, -1) >= 0) {
@@ -33,6 +29,16 @@ public class BaseballGame {
             }
         }
         return strikeCnt;
+    }
+
+    public int countBall(List<Character> userInput) {
+        int ballCnt = 0;
+        for (int idx=0; idx<userInput.size(); idx++) {
+            if (isSameNumber(userInput.get(idx)) && answer.get(userInput.get(idx)) != idx) {
+                ballCnt++;
+            }
+        }
+        return ballCnt;
     }
 }
 

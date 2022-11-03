@@ -36,7 +36,7 @@ class ApplicationTest extends NsTest {
     class StrikeTest {
 
         @Test
-        void 스트라이크_테스트_인풋_하나일_때() {
+        void 스트라이크_테스트_한자리_숫자() {
             BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
             List<Character> userInput = List.of('1');
             assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
@@ -49,6 +49,25 @@ class ApplicationTest extends NsTest {
             assertThat(baseballGame.countStrike(userInput)).isEqualTo(2);
         }
     }
+
+    @Nested
+    class BallTest{
+
+        @Test
+        void 볼_테스트_인풋_한자리_숫자() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('3');
+            assertThat(baseballGame.countBall(userInput)).isEqualTo(1);
+        }
+
+        @Test
+        void 볼_테스트_인픗_세자리_숫자() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '3', '5'));
+            List<Character> userInput = List.of('5', '1', '3');
+            assertThat(baseballGame.countBall(userInput)).isEqualTo(3);
+        }
+    }
+
 
 
     @Test
