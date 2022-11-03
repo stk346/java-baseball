@@ -68,6 +68,45 @@ class ApplicationTest extends NsTest {
         }
     }
 
+    @Nested
+    class 결과_테스트 {
+
+        @Test
+        void 스트라이크1() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('1', '4', '5');
+            baseballGame.getResults(userInput);
+        }
+
+        @Test
+        void 스트라이크2볼1() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('1', '2', '2');
+            baseballGame.getResults(userInput);
+        }
+
+        @Test
+        void 스트라이크3() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('1', '2', '3');
+            baseballGame.getResults(userInput);
+        }
+
+        @Test
+        void 볼3() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('2', '3', '1');
+            baseballGame.getResults(userInput);
+        }
+
+        @Test
+        void 낫싱() {
+            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            List<Character> userInput = List.of('4', '5', '6');
+            baseballGame.getResults(userInput);
+        }
+    }
+
 
 
     @Test
