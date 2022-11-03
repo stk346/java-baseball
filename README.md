@@ -188,6 +188,6 @@ while (computer.size() < 3) {
   - [ ] 2입력: 게임 종료
 
 * 예외케이스 (IllegalArgumentException)
-  - [ ] 입력은 세자리 숫자 이내 허용, 3자리 초과 불가
+  - [ ] 입력은 세자리 숫자만 허용됨
   - [ ] 0은 올 수 없음
 
