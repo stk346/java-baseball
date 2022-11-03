@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class BaseballGame {
-    HashMap<Character, Integer> answer = new HashMap<>();
+    private HashMap<Character, Integer> answer = new HashMap<>();
 
     public BaseballGame(List<Character> answer) {
         for (int idx=0; idx<answer.size(); idx++) {
@@ -38,23 +38,6 @@ public class BaseballGame {
             }
         }
         return ballCnt;
-    }
-
-    public void getResults(List<Character> userInput) {
-        String results = "";
-        int strikeCnt = countStrike(userInput);
-        int ballCnt = countBall(userInput);
-
-        if (ballCnt > 0) {
-            results += ballCnt + "볼 " ;
-        }
-        if (strikeCnt > 0) {
-            results += strikeCnt + "스트라이크";
-        }
-        if (strikeCnt == 0 & ballCnt == 0) {
-            results += "낫싱";
-        }
-        System.out.println(results);
     }
 }
 

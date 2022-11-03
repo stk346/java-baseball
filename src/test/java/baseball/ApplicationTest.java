@@ -1,5 +1,6 @@
 package baseball;
 
+import baseball.controller.GameController;
 import baseball.model.BaseballGame;
 import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
@@ -73,37 +74,50 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 스트라이크1() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            GameController gameController = new GameController(List.of('1', '2', '3'));
             List<Character> userInput = List.of('1', '4', '5');
-            baseballGame.getResults(userInput);
+            gameController.getResults(userInput);
         }
 
         @Test
         void 스트라이크2볼1() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            GameController gameController = new GameController(List.of('1', '2', '3'));
             List<Character> userInput = List.of('1', '2', '2');
-            baseballGame.getResults(userInput);
+            gameController.getResults(userInput);
         }
-
+//
         @Test
         void 스트라이크3() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            GameController gameController = new GameController(List.of('1', '2', '3'));
             List<Character> userInput = List.of('1', '2', '3');
-            baseballGame.getResults(userInput);
+            gameController.getResults(userInput);
         }
-
+//
         @Test
         void 볼3() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            GameController gameController = new GameController(List.of('1', '2', '3'));
             List<Character> userInput = List.of('2', '3', '1');
-            baseballGame.getResults(userInput);
+            gameController.getResults(userInput);
         }
 
         @Test
         void 낫싱() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
+            GameController gameController = new GameController(List.of('1', '2', '3'));
             List<Character> userInput = List.of('4', '5', '6');
-            baseballGame.getResults(userInput);
+            gameController.getResults(userInput);
+        }
+    }
+
+    @Nested
+    class ThreeStrikeTest {
+
+        @Test
+        void 쓰리스트라이크_테스트() {
+            List<Character> answer = List.of('1', '2', '3');
+            GameController gameController = new GameController(answer);
+
+            List<Character> userInput = List.of('1', '2', '3');
+            gameController.playGame(userInput);
         }
     }
 
