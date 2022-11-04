@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -16,8 +16,9 @@ public class RandomNumberGenerator {
                 computer.add(randomNumber);
             }
         }
-        List<String> convertedList = computer.stream().map(x -> String.valueOf(x)).collect(Collectors.toList());
-        return convertedList;
+        return computer.stream()
+                .map(String::valueOf)
+                .collect(Collectors.toList());
     }
 
     public void randNumAPITest() {

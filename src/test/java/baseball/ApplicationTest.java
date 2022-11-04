@@ -1,7 +1,5 @@
 package baseball;
 
-import baseball.model.BaseballGame;
-import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

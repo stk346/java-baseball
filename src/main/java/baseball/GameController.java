@@ -1,49 +1,11 @@
-package baseball.controller;
+package baseball;
 
-import baseball.model.BaseballGame;
 import camp.nextstep.edu.missionutils.Console;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameController {
-
-    private List<String> convertUserInputToList(String userInput) {
-        List<String> convertedList = new ArrayList<>();
-        for (int idx=0; idx<userInput.length(); idx++) {
-            char separatedInput = userInput.charAt(idx);
-            raiseErrorWhenInputIsNotDigitOrZero(separatedInput);
-            convertedList.add(String.valueOf(userInput.charAt(idx)));
-        }
-        return convertedList;
-    }
-
-    private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) throws IllegalArgumentException {
-        if (!Character.isDigit(separatedInput)) {
-            System.out.println("숫자만 입력해주세요.");
-            throw new IllegalArgumentException();
-        }
-        if (separatedInput == '0') {
-            System.out.println("1과 9사이의 숫자만 입력해주세요.");
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private List<String> getUserInput() {
-        System.out.println("숫자를 입력해주세요 : ");
-        String userInput = Console.readLine();
-        raiseErrorWhenInputLengthOver3(userInput);
-        List<String> inputList = convertUserInputToList(userInput);
-
-        return inputList;
-    }
-
-    private void raiseErrorWhenInputLengthOver3(String userInput) throws IllegalArgumentException {
-        if (userInput.length() > 3) {
-            System.out.println("입력은 세자리 숫자만 허용됩니다.");
-            throw new IllegalArgumentException();
-        }
-    }
 
     public String playGame() {
         boolean isThreeStrike = false;
@@ -64,11 +26,48 @@ public class GameController {
         return isRestart;
     }
 
+    private List<String> getUserInput() {
+        System.out.println("숫자를 입력해주세요 : ");
+        String userInput = Console.readLine();
+        raiseErrorWhenInputLengthOver3(userInput);
+        List<String> inputList = convertUserInputToList(userInput);
+
+        return inputList;
+    }
+
+    private List<String> convertUserInputToList(String userInput) {
+        List<String> convertedList = new ArrayList<>();
+        for (int idx = 0; idx < userInput.length(); idx++) {
+            char separatedInput = userInput.charAt(idx);
+            raiseErrorWhenInputIsNotDigitOrZero(separatedInput);
+            convertedList.add(String.valueOf(userInput.charAt(idx)));
+        }
+        return convertedList;
+    }
+
+    private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) throws IllegalArgumentException {
+        if (!Character.isDigit(separatedInput)) {
+            System.out.println("숫자만 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        if (separatedInput == '0') {
+            System.out.println("1과 9사이의 숫자만 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private void raiseErrorWhenInputLengthOver3(String userInput) throws IllegalArgumentException {
+        if (userInput.length() > 3) {
+            System.out.println("입력은 세자리 숫자만 허용됩니다.");
+            throw new IllegalArgumentException();
+        }
+    }
+
     private String raiseErrorWhenInputIsNot1Or2() throws IllegalArgumentException {
         String userInput = Console.readLine();
 
-        try{
-            if (!(userInput.equals("1") || userInput.equals("2"))){
+        try {
+            if (!(userInput.equals("1") || userInput.equals("2"))) {
                 throw new IllegalArgumentException();
             }
         } catch (IllegalArgumentException e) {
