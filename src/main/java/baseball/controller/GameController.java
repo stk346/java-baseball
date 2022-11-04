@@ -8,23 +8,30 @@ import java.util.List;
 
 public class GameController {
 
-    private List<String> convertUserInputToList(String userInput) {
+    private List<String> convertUserInputToList(String userInput) throws IllegalArgumentException  {
         List<String> convertedList = new ArrayList<>();
         for (int idx=0; idx<userInput.length(); idx++) {
+            char separatedInput = userInput.charAt(idx);
+            raiseIllegalArgumentExceptionWhenInputIsNotDigit(separatedInput);
             convertedList.add(String.valueOf(userInput.charAt(idx)));
         }
         return convertedList;
     }
 
-    private List<String> getUserInput() {
+    private void raiseIllegalArgumentExceptionWhenInputIsNotDigit(char separatedInput) throws IllegalArgumentException {
+        if (!Character.isDigit(separatedInput)) {
+            System.out.println("숫자만 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private List<String> getUserInput() throws IllegalArgumentException{
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
         List<String> inputList = convertUserInputToList(userInput);
 
         return inputList;
     }
-
-
 
     public String playGame() {
         boolean isThreeStrike = false;
