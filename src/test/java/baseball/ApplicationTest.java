@@ -1,13 +1,11 @@
 package baseball;
 
-import baseball.controller.GameController;
 import baseball.model.BaseballGame;
 import baseball.model.RandomNumberGenerator;
 import camp.nextstep.edu.missionutils.test.NsTest;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertRandomNumberInRangeTest;

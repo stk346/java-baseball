@@ -8,7 +8,7 @@ import java.util.List;
 
 public class GameController {
 
-    private List<String> convertUserInputToList(String userInput) throws IllegalArgumentException  {
+    private List<String> convertUserInputToList(String userInput) {
         List<String> convertedList = new ArrayList<>();
         for (int idx=0; idx<userInput.length(); idx++) {
             char separatedInput = userInput.charAt(idx);
@@ -59,7 +59,22 @@ public class GameController {
         }
         System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        String isRestart = Console.readLine();
+
+        String isRestart = raiseErrorWhenInputIsNot1Or2();
         return isRestart;
+    }
+
+    private String raiseErrorWhenInputIsNot1Or2() throws IllegalArgumentException {
+        String userInput = Console.readLine();
+
+        try{
+            if (!(userInput.equals("1") || userInput.equals("2"))){
+                throw new IllegalArgumentException();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("1과 2만 입력할 수 있습니다.");
+            return raiseErrorWhenInputIsNot1Or2();
+        }
+        return userInput;
     }
 }
