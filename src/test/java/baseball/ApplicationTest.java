@@ -38,15 +38,15 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 스트라이크_테스트_한자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('1');
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1");
             assertThat(baseballGame.countStrike(userInput)).isEqualTo(1);
         }
 
         @Test
         void 스트라이크_테스트_인풋_세개일_때() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '3', '5'));
-            List<Character> userInput = List.of('1', '3', '2');
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
+            List<String> userInput = List.of("1", "3", "2");
             assertThat(baseballGame.countStrike(userInput)).isEqualTo(2);
         }
     }
@@ -56,15 +56,15 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 볼_테스트_인풋_한자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('3');
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("3");
             assertThat(baseballGame.countBall(userInput)).isEqualTo(1);
         }
 
         @Test
         void 볼_테스트_인픗_세자리_숫자() {
-            BaseballGame baseballGame = new BaseballGame(List.of('1', '3', '5'));
-            List<Character> userInput = List.of('5', '1', '3');
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "3", "5"));
+            List<String> userInput = List.of("5", "1", "3");
             assertThat(baseballGame.countBall(userInput)).isEqualTo(3);
         }
     }
@@ -74,53 +74,39 @@ class ApplicationTest extends NsTest {
 
         @Test
         void 스트라이크1() {
-            GameController gameController = new GameController(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('1', '4', '5');
-            gameController.getResults(userInput);
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "4", "5");
+            baseballGame.getResults(userInput);
         }
 
         @Test
         void 스트라이크2볼1() {
-            GameController gameController = new GameController(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('1', '2', '2');
-            gameController.getResults(userInput);
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "2");
+            baseballGame.getResults(userInput);
         }
 //
         @Test
         void 스트라이크3() {
-            GameController gameController = new GameController(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('1', '2', '3');
-            gameController.getResults(userInput);
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("1", "2", "3");
+            baseballGame.getResults(userInput);
         }
 //
         @Test
         void 볼3() {
-            GameController gameController = new GameController(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('2', '3', '1');
-            gameController.getResults(userInput);
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("2", "3", "1");
+            baseballGame.getResults(userInput);
         }
 
         @Test
         void 낫싱() {
-            GameController gameController = new GameController(List.of('1', '2', '3'));
-            List<Character> userInput = List.of('4', '5', '6');
-            gameController.getResults(userInput);
+            BaseballGame baseballGame = new BaseballGame(List.of("1", "2", "3"));
+            List<String> userInput = List.of("4", "5", "6");
+            baseballGame.getResults(userInput);
         }
     }
-
-    @Nested
-    class ThreeStrikeTest {
-
-        @Test
-        void 쓰리스트라이크_테스트() {
-            List<Character> answer = List.of('1', '2', '3');
-            GameController gameController = new GameController(answer);
-
-            List<Character> userInput = List.of('1', '2', '3');
-            gameController.playGame(userInput);
-        }
-    }
-
 
 
     @Test

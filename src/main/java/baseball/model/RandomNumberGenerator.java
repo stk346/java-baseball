@@ -3,17 +3,22 @@ package baseball.model;
 import camp.nextstep.edu.missionutils.Randoms;
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RandomNumberGenerator {
 
-    public List<Character> generateRandNum() {
-        List<Character> randNumList;
-        List<Character> baseNumList = List.of('1', '2', '3', '4', '5', '6', '7', '8', '9');
-
-        randNumList = Randoms.shuffle(baseNumList.subList(0, 3));
-
-        return randNumList;
+    public List<String> generateRandNum() {
+        List<Integer> computer = new ArrayList<>();
+        while (computer.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!computer.contains(randomNumber)) {
+                computer.add(randomNumber);
+            }
+        }
+        List<String> convertedList = computer.stream().map(x -> String.valueOf(x)).collect(Collectors.toList());
+        return convertedList;
     }
 
     public void randNumAPITest() {
