@@ -12,25 +12,33 @@ public class GameController {
         List<String> convertedList = new ArrayList<>();
         for (int idx=0; idx<userInput.length(); idx++) {
             char separatedInput = userInput.charAt(idx);
-            raiseIllegalArgumentExceptionWhenInputIsNotDigit(separatedInput);
+            raiseErrorWhenInputIsNotDigit(separatedInput);
             convertedList.add(String.valueOf(userInput.charAt(idx)));
         }
         return convertedList;
     }
 
-    private void raiseIllegalArgumentExceptionWhenInputIsNotDigit(char separatedInput) throws IllegalArgumentException {
+    private void raiseErrorWhenInputIsNotDigit(char separatedInput) throws IllegalArgumentException {
         if (!Character.isDigit(separatedInput)) {
             System.out.println("숫자만 입력해주세요.");
             throw new IllegalArgumentException();
         }
     }
 
-    private List<String> getUserInput() throws IllegalArgumentException{
+    private List<String> getUserInput() {
         System.out.println("숫자를 입력해주세요 : ");
         String userInput = Console.readLine();
+        raiseErrorWhenInputLengthOver3(userInput);
         List<String> inputList = convertUserInputToList(userInput);
 
         return inputList;
+    }
+
+    private void raiseErrorWhenInputLengthOver3(String userInput) throws IllegalArgumentException {
+        if (userInput.length() > 3) {
+            System.out.println("입력은 세자리 숫자만 허용됩니다.");
+            throw new IllegalArgumentException();
+        }
     }
 
     public String playGame() {
