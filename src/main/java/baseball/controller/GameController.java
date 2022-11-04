@@ -12,15 +12,19 @@ public class GameController {
         List<String> convertedList = new ArrayList<>();
         for (int idx=0; idx<userInput.length(); idx++) {
             char separatedInput = userInput.charAt(idx);
-            raiseErrorWhenInputIsNotDigit(separatedInput);
+            raiseErrorWhenInputIsNotDigitOrZero(separatedInput);
             convertedList.add(String.valueOf(userInput.charAt(idx)));
         }
         return convertedList;
     }
 
-    private void raiseErrorWhenInputIsNotDigit(char separatedInput) throws IllegalArgumentException {
+    private void raiseErrorWhenInputIsNotDigitOrZero(char separatedInput) throws IllegalArgumentException {
         if (!Character.isDigit(separatedInput)) {
             System.out.println("숫자만 입력해주세요.");
+            throw new IllegalArgumentException();
+        }
+        if (separatedInput == '0') {
+            System.out.println("1과 9사이의 숫자만 입력해주세요.");
             throw new IllegalArgumentException();
         }
     }
